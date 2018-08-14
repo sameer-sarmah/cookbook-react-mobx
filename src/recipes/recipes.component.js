@@ -10,18 +10,13 @@ import './recipes.component.css';
 export class RecipeComponent extends Component {
  
     recipeStore;
-    cartStore
+    cartStore;
 
     constructor(props){
     super(props);
      this.recipeStore = this.props.RecipeStore;
      this.cartStore = this.props.CartStore;
    } 
-
-   setSelectedRecipe(recipeID){
-    this.selectedRecipe=this.recipeSvc.getRecipe(recipeID);
-
-   }
 
     render() {
         const panel = (
