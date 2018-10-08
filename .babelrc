@@ -1,7 +1,8 @@
 {
-    "presets": ["mobx","env",
-        "react",
-        "es2015","react-app"
+    "presets": ["mobx","@babel/env",
+        "@babel/react"
     ],
-    "plugins": ["babel-plugin-transform-decorators-legacy","transform-class-properties","transform-async-to-generator"]
+    "plugins": [["@babel/plugin-proposal-decorators",{ "legacy": true }],
+    ["@babel/plugin-proposal-class-properties", { "loose" : true }],
+    "@babel/plugin-transform-async-to-generator"]
 }
