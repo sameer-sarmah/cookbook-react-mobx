@@ -18,21 +18,23 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "jest"
+    "test": "jest",
+    "debug-jest":"node --debug-brk --inspect ./node_modules/.bin/jest -i"
   },
   "devDependencies": {
     "@babel/core": "7.1.2",
     "@babel/plugin-proposal-class-properties": "7.1.0",
     "@babel/plugin-proposal-decorators": "^7.1.2",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/plugin-transform-async-to-generator": "^7.1.0",
     "@babel/plugin-transform-runtime": "7.1.0",
     "@babel/polyfill": "7.0.0",
     "@babel/preset-env": "7.1.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "7.1.2",
-    "babel-core": "^7.0.0-bridge.0",
     "autoprefixer": "7.1.6",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "7.2.3",
     "babel-jest": "23.6.0",
     "babel-loader": "8.0.4",
@@ -78,7 +80,7 @@
     "extends": "react-app"
   },
   "jest": {
-    "collectCoverage": true,
+    "collectCoverage": false,
     "collectCoverageFrom": [
       "**/*.{js,jsx}",
       "!**/node_modules/**",
@@ -90,6 +92,11 @@
       "<rootDir>/src/test/polyfills.js",
       "<rootDir>/src/test/setup.js"
     ],
+    "transform": {
+      "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
+      "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+    },
     "moduleNameMapper": {
       "\\.(css|less)$": "identity-obj-proxy"
     },
